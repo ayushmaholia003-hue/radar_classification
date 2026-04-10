@@ -1,0 +1,7 @@
+mean_PRI,PRI_variance,PRI_pattern,mean_frequency,frequency_variance,mean_pulse_width,duty_cycle
+1800,160,staggered,3100,65,5.0,0.0028
+260,18,constant,9800,30,0.7,0.0025
+720,10,constant,8400,20,1.4,0.0021
+4900,350,jittered,2900,120,9.2,0.0019
+950,80,constant,1200,40,3.0,0.0030
+1500,120,staggered,5000,70,4.5,0.0030
