@@ -5,7 +5,6 @@ from src.ml_pipeline import MLRadarPipeline
 
 
 def main():
-    """Evaluate trained model."""
     print("="*60)
     print("MODEL EVALUATION")
     print("="*60)
@@ -17,16 +16,12 @@ def main():
         'models/preprocessor.pkl'
     )
     
-    # Load full dataset
-    df = pd.read_csv('data/radar_dataset.csv')
+    df = pd.read_csv('data/radar_dataset_with_noise.csv')
     
-    # Prepare features
     X, y_true = pipeline.preprocessor.prepare_features(df, fit=False)
     
-    # Predict
     y_pred, confidences = pipeline.classifier.predict_with_confidence(X)
     
-    # Calculate metrics
     accuracy = accuracy_score(y_true, y_pred)
     
     print(f"\nOverall Accuracy: {accuracy:.2%}")
@@ -34,7 +29,6 @@ def main():
     print(f"Min Confidence: {np.min(confidences):.4f}")
     print(f"Max Confidence: {np.max(confidences):.4f}")
     
-    # Classification report
     print("\n" + "="*60)
     print("CLASSIFICATION REPORT")
     print("="*60)
@@ -42,20 +36,17 @@ def main():
     target_names = pipeline.preprocessor.label_encoder.classes_
     print(classification_report(y_true, y_pred, target_names=target_names))
     
-    # Confusion matrix
     print("\n" + "="*60)
     print("CONFUSION MATRIX")
     print("="*60)
     cm = confusion_matrix(y_true, y_pred)
     
-    # Print confusion matrix with labels
     print("\nPredicted →")
     print("Actual ↓")
     print("\t" + "\t".join([name[:10] for name in target_names]))
     for i, name in enumerate(target_names):
         print(f"{name[:10]}\t" + "\t".join([str(cm[i, j]) for j in range(len(target_names))]))
     
-    # Per-class confidence
     print("\n" + "="*60)
     print("PER-CLASS CONFIDENCE")
     print("="*60)

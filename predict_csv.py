@@ -11,17 +11,14 @@ def main():
     
     input_file = sys.argv[1]
     
-    # Load model
     pipeline = MLRadarPipeline()
     pipeline.load_model(
         'models/xgboost_classifier.pkl',
         'models/preprocessor.pkl'
     )
     
-    # Load CSV
     df = pd.read_csv(input_file)
     
-    # Predict for each row
     print(f"Predictions for {input_file}:")
     print("-" * 80)
     

@@ -1,26 +1,21 @@
-# ML-Based Radar Classification System
-
-**Production-ready XGBoost classifier for radar emitter identification**
-
----
 
 ## 🚀 Quick Start
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+# 1. Install dependencies
+pip3 install -r requirements.txt
 
-# Train model
-python train_model.py
+# 2. Train model (if needed)
+python3 train_model.py
 
-# Run predictions
-python predict.py
+# 3. Evaluate model
+python3 evaluate.py
 
-# Evaluate model
-python evaluate.py
-```
+# 4. Predict from CSV
+python3 predict_csv.py radar.csv
 
----
+# Or predict any other CSV file
+python3 predict_csv.py data/test_dataset.csv
+
 
 ## 📊 System Overview
 
